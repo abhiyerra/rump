@@ -1,10 +1,11 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"flag"
-	"github.com/garyburd/redigo/redis"
+	"fmt"
+	"os"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 // Report all errors to stdout.
@@ -19,7 +20,7 @@ func handle(err error) {
 func get(conn redis.Conn, queue chan<- map[string]string) {
 	var (
 		cursor int64
-		keys []string
+		keys   []string
 	)
 
 	for {
